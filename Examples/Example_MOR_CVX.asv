@@ -1,11 +1,11 @@
 %%%% Example: Model Reduction of Linear Discrete Time Systems
-% Requirements to run this file: CVX (and SDP solver)
 % 
-%   Steps: 
+% Steps: 
 %   1. Approximate finite dimensional Hankel matrix of the system with 
-%      Low-rank Inducing Frobenius Norm in CVX
-%   2. Obtain Realization that matches the impulse response of the
-%      approximation with Kung's Realization Algorithm
+%      Low-rank Inducing Norm
+%   2. Obtain Realization of the A
+%   
+
 
 
 % Choose desired order r
