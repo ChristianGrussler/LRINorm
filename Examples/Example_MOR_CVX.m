@@ -1,4 +1,4 @@
-%%%% Example: Model Reduction of Linear Discrete Time Systems
+%%%% Example: Model Reduction of a Linear Discrete Time SISO System
 % Requirements to run this file: CVX (and SDP solver)
 % 
 %   Steps: 
@@ -6,12 +6,13 @@
 %      Low-rank Inducing Frobenius Norm in CVX
 %   2. Obtain Realization that matches the impulse response of the
 %      approximation with Kung's Realization Algorithm
-
+%
+%%%%
 
 % Choose desired order r
 r = 1;
 
-% Define system matrices
+% Define SISO system matrices
 A = diag(0:.1:.9);
 n = length(A);
 B = ones(n,1);
