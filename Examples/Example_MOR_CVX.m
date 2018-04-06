@@ -6,8 +6,14 @@
 %      low-rank inducing Frobenius norm (r* norm) in CVX
 %   2. Obtain realization that matches the impulse response of the
 %      approximation with Kung's realization algorithm
+%   
 %
-%%%%
+%%%
+% Reference:
+%   C. Grussler and A. Rantzer and P. Giselsson (2018): 
+%   Low-Rank Optimization with Convex Constraints, 
+%   IEEE Transactions on Automatic Control, DOI: 10.1109/TAC.2018.2813009.  
+%%%
 
 % Choose desired order r
 r = 1;
