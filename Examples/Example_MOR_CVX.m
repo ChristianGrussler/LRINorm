@@ -3,9 +3,9 @@
 % 
 %   Steps: 
 %   1. Approximate finite dimensional Hankel matrix of the system with 
-%      Low-rank Inducing Frobenius Norm in CVX
-%   2. Obtain Realization that matches the impulse response of the
-%      approximation with Kung's Realization Algorithm
+%      low-rank inducing Frobenius norm (r* norm) in CVX
+%   2. Obtain realization that matches the impulse response of the
+%      approximation with Kung's realization algorithm
 %
 %%%%
 
