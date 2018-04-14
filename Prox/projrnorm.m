@@ -35,11 +35,27 @@
 %       a) t_0 if init.t = t_0.
 %       b) s_0 if init.s = s_0.
 %       c) k_0 if init.k = k_0 (only for p =1).
-%%% 
+%
+%%%%%%%%%%%%%
 % References:
-% [1] 
-% [2]
-%%%%
+%   - C. Grussler and A. Rantzer and P. Giselsson (2018): 
+%   "Low-Rank Optimization with Convex Constraints", 
+%   IEEE Transactions on Automatic Control, DOI: 10.1109/TAC.2018.2813009.
+%
+%   - C. Grussler and P. Giselsson (2016):
+%   "Low-Rank Inducing Norms With Optimality Interpreations", 
+%   arXiv:1612.03186v1.
+%
+%   - C. Grussler and P. Giselsson (2017):
+%   "Local convergence of proximal splitting methods for rank constrained
+%   problems", pp. 702-708, IEEE 56th Annual Conference on Decision and Control
+%   (CDC), DOI: 10.1109/CDC.2017.8263743.
+%
+%   - C. Grussler (2017):
+%   "Rank reduction with convex constraints", PhD Thesis, 
+%   Department of Automatic Control, Lund Institute of Technology, 
+%   Lund University, ISBN 978-91-7753-081-7.
+%%%%%%%%%%%%%
 
 function [y,w,final] = projrnorm(z,zv,r,p,gamma,varargin)
 n = length(z);
@@ -277,16 +293,12 @@ while indt == 0
                 is_polar = 0; % Flag not polar cone case
                 if mode_ball == 1 
                     % Polynomial for projection onto unit-ball
-                    syms mu
-                    poly = sym2poly(((mu/gamma+gamma)^2-c_1)*((t+s)*gamma+mu*t/gamma)^2-t*c_2^2*(mu/gamma+gamma)^2);
-                    
+                    polynom = [(t^2/gamma^4), ((2*t^2)/gamma^2 + (2*t*(s + t))/gamma^2), (4*t*(s + t) + (s + t)^2 - (c_2^2*t)/gamma^2 - (t^2*(- gamma^2 + c_1))/gamma^2), (2*gamma^2*(s + t)^2 - 2*c_2^2*t - 2*t*(s + t)*(- gamma^2 + c_1)), - c_2^2*gamma^2*t - gamma^2*(s + t)^2*(- gamma^2 + c_1)];
                 else
                     % Polynomial for projection onto epi-graph
-                    syms mu
-                    poly = sym2poly(((mu/gamma-gamma*(zv-mu))^2-c_1)*((t+s)*gamma*(zv-mu)-mu*t/gamma)^2-t*c_2^2*(mu/gamma-gamma*(zv-mu))^2);
-                    
+                    polynom = [(gamma*(s + t) + t/gamma)^2*(gamma + 1/gamma)^2, (- 2*gamma*zv*(gamma*(s + t) + t/gamma)^2*(gamma + 1/gamma) - 2*gamma*zv*(gamma*(s + t) + t/gamma)*(s + t)*(gamma + 1/gamma)^2), (gamma^2*zv^2*(s + t)^2*(gamma + 1/gamma)^2 - c_2^2*t*(gamma + 1/gamma)^2 - (gamma*(s + t) + t/gamma)^2*(- gamma^2*zv^2 + c_1) + 4*gamma^2*zv^2*(gamma*(s + t) + t/gamma)*(s + t)*(gamma + 1/gamma)), (2*c_2^2*gamma*t*zv*(gamma + 1/gamma) - 2*gamma^3*zv^3*(s + t)^2*(gamma + 1/gamma) + 2*gamma*zv*(gamma*(s + t) + t/gamma)*(s + t)*(- gamma^2*zv^2 + c_1)), - c_2^2*gamma^2*t*zv^2 - gamma^2*zv^2*(s + t)^2*(- gamma^2*zv^2 + c_1)];
                 end
-                R = roots(poly);
+                R = roots(polynom);
                 I = (abs(imag(R)) <= tol_rel);
                 mu = max(R(I));
             end

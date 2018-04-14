@@ -31,47 +31,29 @@
 %       a) t_0 if init.t = t_0.
 %       b) s_0 if init.s = s_0.
 %       c) k_0 if init.k = k_0 (only for p =inf).
+%
+%%%%%%%%%%%%%
+% References:
+%   - C. Grussler and A. Rantzer and P. Giselsson (2018): 
+%   "Low-Rank Optimization with Convex Constraints", 
+%   IEEE Transactions on Automatic Control, DOI: 10.1109/TAC.2018.2813009.
+%
+%   - C. Grussler and P. Giselsson (2016):
+%   "Low-Rank Inducing Norms With Optimality Interpreations", 
+%   arXiv:1612.03186v1.
+%
+%   - C. Grussler and P. Giselsson (2017):
+%   "Local convergence of proximal splitting methods for rank constrained
+%   problems", pp. 702-708, IEEE 56th Annual Conference on Decision and Control
+%   (CDC), DOI: 10.1109/CDC.2017.8263743.
+%
+%   - C. Grussler (2017):
+%   "Rank reduction with convex constraints", PhD Thesis, 
+%   Department of Automatic Control, Lund Institute of Technology, 
+%   Lund University, ISBN 978-91-7753-081-7.
+%%%%%%%%%%%%%
 function [X,final] = proxnormrast_square(Z,r,p,gamma,varargin)
-% Check if p = 2 or p = inf
-if p ~= 2 && p~=inf
-    error('p can only be equal to 2 or inf');
-end
 
-%% Check options
-[n,m] = size(Z);
-min_mn = min([n m]);
-max_mn = max([n m]);
-vec = 0; % Flag Z has matrix
-for i = 1:length(varargin)
-     
-    if strcmp(varargin{i},'vec') 
-        if min_mn==1 
-            if r <= max_mn
-                vec = 1; %Flag Z as vector
-            else
-                error('r is larger than length(Z)');    
-            end
-        else
-            error('Z is not a vector'); 
-        end
-    end
-    
-end
-
-      
-if vec == 1 
-    %% Vector valued problem
-    % Moreau decomposition
-    [Y,final] = projrast(Z,0,r,p,sqrt(gamma),varargin);
-    X = Y;
-else
-    %% Matrix valued problem
-    [U,S,V] = svd(Z);
-    d = diag(S);
-    [y,final] = projrast(d,0,r,p,sqrt(gamma),varargin);
-    % Moreau decomposition
-    S(1:min_mn,1:min_mn) = diag(y);
-    X = U*S*V';
-end
+[X,~,final] = projrast(Z,0,r,p,sqrt(gamma),varargin);
 
 end
