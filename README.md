@@ -94,7 +94,7 @@ Proximal mapping of the low-rank inducing norms with at Z with parameter r and s
 X = proxnormrast(Z,r,p,gamma)
 ```
 #### Squared Low-rank inducing Spectral and Frobenius norms: 
-Proximal mapping of the SQUARED low-rank inducing norms with at Z with parameter r and scaling factor gamma :
+Proximal mapping of the SQUARED low-rank inducing norms with at Z with parameter r and scaling factor gamma:
 ```
 X = proxnormrast_square(Z,r,p,gamma)
 ```
