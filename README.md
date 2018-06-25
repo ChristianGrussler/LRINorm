@@ -7,7 +7,9 @@ For CVX implementations get CVX from: http://cvxr.com/cvx/
 
 ## Installation
 
-Download all files: https://github.com/LowRankOpt/LRINorm/archive/master.zip and add path.
+Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archive/master.zip 
+
+
 
 
 
