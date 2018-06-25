@@ -20,36 +20,46 @@ Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archiv
 
 ## Documentation
 
-Serveral examples are found in the folder "Examples", which demonstrate how to use the other files.
+### Examples:
+There are three examples in the "Example" folder:
 
-The folder "Prox" contains several proximal mappings to the low-rank inducing Frobenius and Spectral norm:
+1. Exact Matrix Completion
+2. Low-rank approximation with Hankel constraint
+3. Model Order Reduction through Hankel low-rank approximation
 
-### Low-rank inducing Frobenius norm: 
 
-Proximal mapping of the low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at a matrix Z by:
-```
-X = proxnormrast(Z,r,2,gamma)
-```
-Proximal mappings of the SQUARED low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at a matrix Z by:
-```
-X = proxnormrast_square(Z,r,2,gamma)
-```
-Projection on the ep-graph of the low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at (Z,zv) by:
-```
-[X,xv] = proxnormrast_square(Z,zv,r,2,gamma)
-```
-### Low-rank inducing Spectral norm: 
+### Proximal Mappings:
+The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm as well as their non-convex counter parts.
 
-Proximal mapping of the low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at a matrix Z by:
+For low-rank inducing Frobenius norm: p = 2
+For low-rank inducing Frobenius norm: p = 1
+
+#### Low-rank inducing Spectral and Frobenius norms: 
+
+Proximal mapping of the low-rank inducing norms with at Z with parameter r and scaling factor gamma:
 ```
-X = proxnormrast(Z,r,1,gamma)
+X = proxnormrast(Z,r,p,gamma)
 ```
-Proximal mappings of the SQUARED low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at a matrix Z by:
+#### Squared Low-rank inducing Spectral and Frobenius norms: 
+Proximal mapping of the SQUARED low-rank inducing norms with at Z with parameter r and scaling factor gamma :
 ```
-X = proxnormrast_square(Z,r,1,gamma)
+X = proxnormrast_square(Z,r,p,gamma)
 ```
-Projection on the ep-graph of the low-rank inducing Frobenius norm with parameter r and scaling factor gamma is evaluated at (Z,zv) by:
+#### Projection on the epi-graph of the low-rank inducing norms: 
+Projection of (Z,zv) on the epi-graph of the low-rank inducing norms with parameter r and scaling factor gamma:
 ```
-[X,xv] = proxnormrast_square(Z,zv,r,1,gamma)
+[X,xv] = proxnormrast_square(Z,zv,r,p,gamma)
 ```
+
+#### Non-convex proximal mappings for Frobenius and Spectral norm: 
+
+Non-convex proximal mapping of at Z with parameter r and scaling factor gamma:
+```
+X = proxnonconv(Z,r,p,gamma)
+```
+#### Non-convex proximal mappings for squared Frobenius and Spectral norm:
+Non-convex proximal mapping for the SQUARED norms at Z with parameter r and scaling factor gamma :
+```
+X = proxnonconv_square(Z,r,p,gamma)
+
 
