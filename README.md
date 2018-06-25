@@ -29,7 +29,7 @@ Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archiv
 * For low-rank inducing Frobenius norm: p = 2
 * For low-rank inducing Frobenius norm: p = 1
 
-### Examples:
+### Examples
 There are three examples in the "Example" folder:
 
 1. Exact Matrix Completion
@@ -38,13 +38,13 @@ There are three examples in the "Example" folder:
 
 ### Optimization
 
-The "Optimizaton" folder contains Douglas-Rachford (DR) as well as CVX implementations for the low-rank inducing Frobenius and Spectral norms.
+The "Optimizaton" folder contains Douglas-Rachford splitting as well as CVX implementations for the low-rank inducing Frobenius and Spectral norms.
 
 #### Exact Matrix completion
 
 Let N be a matrix and Index be a binary matrix of the same size, where the ones indicate the known entries N. We attempt to find a rank-r completion M through
 
-a) Low-rank inducing norms with Douglas-Rachford:
+a) Low-rank inducing norms with Douglas-Rachford splitting:
 
 ```
 M = drcomplete(N,Index,r,p)
@@ -56,18 +56,35 @@ b) Low-rank inducing norms with CVX:
 M = cvxcomplete(N,Index,r,p)
 ```
 
-c) Non-convex Douglas-Rachford :
+c) Non-convex Douglas-Rachford splitting:
 
 ```
 M = drcomplete(N,Index,r,p,'solver','NDR')
 ```
 
+#### Low-rank Hankel Approximation
 
+Let H be a matrix. We attempt to find a rank-r Hankel approximation M that minimizes the Frobenius norm error through
 
+a) Low-rank inducing Frobnius norms with Douglas-Rachford splitting:
 
+```
+M = drhankelapprox(H,r)
+```
 
+b) Low-rank inducing Frobenius norms with CVX:
 
-### Proximal Mappings:
+```
+M = cvxhankelapprox(H,r)
+```
+
+c) Non-convex Douglas-Rachford splitting with Frobenius norm:
+
+```
+M = drhankelapprox(H,r,'solver','NDR')
+```
+
+### Proximal Mappings
 The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm as well as their non-convex counter parts.
 
 #### Low-rank inducing Spectral and Frobenius norms: 
