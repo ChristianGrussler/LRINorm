@@ -44,19 +44,19 @@ The "Optimizaton" folder contains Douglas-Rachford splitting as well as CVX impl
 
 Let N be a matrix and Index be a binary matrix of the same size, where the ones indicate the known entries N. We attempt to find a rank-r completion M through
 
-a) Low-rank inducing norms with Douglas-Rachford splitting:
+i) Low-rank inducing norms with Douglas-Rachford splitting:
 
 ```
 M = drcomplete(N,Index,r,p)
 ```
 
-b) Low-rank inducing norms with CVX:
+ii) Low-rank inducing norms with CVX:
 
 ```
 M = cvxcomplete(N,Index,r,p)
 ```
 
-c) Non-convex Douglas-Rachford splitting:
+iii) Non-convex Douglas-Rachford splitting:
 
 ```
 M = drcomplete(N,Index,r,p,'solver','NDR')
@@ -66,19 +66,19 @@ M = drcomplete(N,Index,r,p,'solver','NDR')
 
 Let H be a matrix. We attempt to find a rank-r Hankel approximation M that minimizes the Frobenius norm error through
 
-a) Low-rank inducing Frobnius norms with Douglas-Rachford splitting:
+i) Low-rank inducing Frobnius norms with Douglas-Rachford splitting:
 
 ```
 M = drhankelapprox(H,r)
 ```
 
-b) Low-rank inducing Frobenius norms with CVX:
+ii) Low-rank inducing Frobenius norms with CVX:
 
 ```
 M = cvxhankelapprox(H,r)
 ```
 
-c) Non-convex Douglas-Rachford splitting with Frobenius norm:
+iii) Non-convex Douglas-Rachford splitting with Frobenius norm:
 
 ```
 M = drhankelapprox(H,r,'solver','NDR')
