@@ -111,7 +111,7 @@ Non-convex proximal mapping of at Z with parameter r and scaling factor gamma:
 X = proxnonconv(Z,r,p,gamma)
 ```
 #### Non-convex proximal mappings for squared Frobenius and Spectral norm:
-Non-convex proximal mapping for the SQUARED norms at Z with parameter r and scaling factor gamma :
+Non-convex proximal mapping for the SQUARED norms at Z with parameter r and scaling factor gamma:
 ```
 X = proxnonconv_square(Z,r,p,gamma)
 ```
