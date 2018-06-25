@@ -25,9 +25,9 @@ For CVX implementations get CVX from: http://cvxr.com/cvx/
 Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archive/master.zip 
 
 ## Documentation
-
-* For low-rank inducing Frobenius norm: p = 2
-* For low-rank inducing Frobenius norm: p = 1
+In the following it holds that
+* for the low-rank inducing Frobenius norm: p = 2
+* for the low-rank inducing Frobenius norm: p = 1
 
 ### Examples
 There are three examples in the "Example" folder:
