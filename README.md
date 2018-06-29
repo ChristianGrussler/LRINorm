@@ -27,7 +27,7 @@ Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archiv
 ## Documentation
 In the following it holds that
 * for the low-rank inducing Frobenius norm: p = 2
-* for the low-rank inducing Frobenius norm: p = 1
+* for the low-rank inducing Spectral norm:  p = 1
 
 ### Examples
 There are three examples in the "Example" folder:
