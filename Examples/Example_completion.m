@@ -1,7 +1,7 @@
 % Example: Matrix completion by low-rank Frobenius-norm mimization
 % N = svd_5(H); 
-% Known entries: positive elements
-% Unkown entries: non-positive elements
+% Known entries: positive elements in N
+% Unkown entries: non-positive elements in N
 % Compare results of DR, NDR and CVX to illustrate their handlings
 %
 %%%%%%%%%%%%%
@@ -27,7 +27,7 @@ r = 5;
 N = U(:,1:r)*S(1:r,1:r)*V(:,1:r)';
 [n,m] = size(N);
 % Define known entries
-Index = H > 0;
+Index = N > 0;
 
 % Intialize Douglas-Rachford iterations in the same point: Z0 = 0
 Z0 = zeros(n,m);
@@ -52,7 +52,7 @@ tic;
 toc; t_cvx = toc;
 
 %% Display summary
-disp('Rank of the different solvers:');
+disp('Rank of the solutions:');
 disp('CVX');
 disp(rankM_cvx);
 disp('Dougals-Rachford');
@@ -62,7 +62,7 @@ disp(rankM_ndr);
 
 pause
 
-disp('Relative Erros of the different solvers:');
+disp('Relative Erros of the solutions:');
 disp('CVX');
 disp(err_cvx/norm(N,'fro'));
 disp('Dougals-Rachford');
@@ -72,7 +72,7 @@ disp(err_ndr/norm(N,'fro'));
 
 pause 
 
-disp('Elapse time of different solvers:');
+disp('Elapse time the solvers:');
 disp('Dougals-Rachford');
 disp(t_dr);
 disp('Non-convex Dougals-Rachford');

@@ -20,26 +20,30 @@
 
 clc
 
-H = hankel(1:10,10:-1:1);
-%H = hankel(1:10);
-r = 5; 
+H = hankel(1:10,10:-1:1); % Hankel matrix
+r = 5; % Desired rank of the approximation
 [n,m] = size(H);
 % Compute the different solutions:
 % Set tolerance for deciding about multiple singular values
 tol = 1e-10;
 
 % Low-rank inducing Frobenius norm with CVX
+tic;
 [M_cvx,rankM_cvx,err_cvx,D_cvx] = cvxhankelapprox(H,r,'tol',tol);
+toc; t_cvx = toc;
 
 % Low-rank inducing Frobenius norm with Douglas-Rachford
+tic;
 [M_dr,rankM_dr,err_dr,D_dr,Z_fix_dr,iter_dr] = drhankelapprox(H,r,'tol',tol);
+toc; t_dr = toc;
 
 % Non-convex Douglas-Rachford
+tic;
 [M_ndr,rankM_ndr,err_ndr,D_ndr,Z_fix_ndr,iter_ndr] = drhankelapprox(H,r,'solver','NDR','tol',tol);
-
+toc; t_ndr = toc;
 
 % Display summary
-disp('Rank:');
+disp('Rank of the solutions:');
 disp('CVX');
 disp(rankM_cvx);
 disp('Dougals-Rachford');
@@ -49,7 +53,7 @@ disp(rankM_ndr);
 
 pause
 
-disp('Relative Errors:');
+disp('Relative Errors of the solutions:');
 disp('CVX');
 disp(err_cvx/norm(H,'fro'));
 disp('Dougals-Rachford');
@@ -59,7 +63,7 @@ disp(err_ndr/norm(H,'fro'));
 
 pause
 
-disp('Elapse time:');
+disp('Elapse time of the solvers:');
 disp('Dougals-Rachford');
 disp(t_dr);
 disp('Non-convex Dougals-Rachford');

@@ -32,11 +32,12 @@
 %       4. [...] = DRCOMPLETE(N,Index,r,p,...,'Z0',Z0,...) sets the initial 
 %       value of the fix-point iteration, i.e. Z_0 = Z0. The default choice 
 %       is Z0 = randn(size(N)).
-%       5. [...] = DRHANKELAPPROX(N,Index,r,p,...,'tol',tol,...) sets the relative
+%       5. [...] = DRCOMPLETE(N,Index,r,p,...,'tol',tol,...) sets the relative
 %       tolerance of:
-%           + The numerical rank: rankM = rank(M/norm(H,'fro'),tol)
-%           + Iterations stop: Stop if (Y_k -X_k)/norm(H,'fro') < tol
-%           + Zero values: E.g., D(abs(D/norm(H,'fro')) < tol) = 0
+%           + The numerical rank: rankM = rank(M/norm(N0,'fro'),tol)
+%           + Iterations stop: Stop if (Y_k -X_k)/norm(N0,'fro') < tol
+%           + Zero values: E.g., D(abs(D/norm(N0,'fro')) < tol) = 0
+%       where N0(Index) = N(Index) and zero otherwise. 
 %       The default tol-value is sqrt(eps).
 %
 %%%%%%%%%%%%%

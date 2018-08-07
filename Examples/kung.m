@@ -15,9 +15,9 @@ Hb = hankel(h(3:l+3),h(l+3:2*l+2));
 
 [U,S,V] = svd(H);
 S = diag(S);
-S(r+1:end,r+1:end) = 0;
-Cr = sqrt(diag(S(1:r)))*V(:,1:r)';
-Or = U(:,1:r)*sqrt(diag(S(1:r)));
+S(r+1:end) = 0;
+Cr = diag(sqrt(S(1:r)))*V(:,1:r)';
+Or = U(:,1:r)*(diag(sqrt(S(1:r))));
 
 A = Or\Hb/Cr;
 B = Cr(:,1);

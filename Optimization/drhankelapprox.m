@@ -29,7 +29,7 @@ function [M,rankM,err,D,Z_fix,iter] = drhankelapprox(H,r,varargin)
 %       Z_{k+1} = Z_k + rho*(Y_k - X_k), where 0 < rho < 2.
 %       The default value is rho = 1.
 %       4. [...] = DRHANKELAPPROX(H,r,...,'Z0',Z0,...) sets the initial value of
-%       the fix-point iteration,. The default choice is Z0 = zeros(size(N)).
+%       the fix-point iteration,. The default choice is Z0 = zeros(size(H)).
 %       5. [...] = DRHANKELAPPROX(H,r,...,'tol',tol,...) sets the relative
 %       tolerance of:
 %           + The numerical rank: rankM = rank(M/norm(H,'fro'),tol)
@@ -86,35 +86,20 @@ for i = 2:2:length(varargin)
    end
 end
 
-
-
-%% Test if svd_r(H) is already Hankel
-[U,S,V] = svd(H);
-norm_H = norm(diag(S)); % Compute norm(H,'fro')
-M = U(:,1:r)*S(1:r,1:r)*V(:,1:r)'; % Compute low-rank approximation or rank r
-Mh = projhankel(M,zeros(dim),0); % Project onto Hankel subspace
+% Define absolute tolerance
+norm_H = norm(H,'fro'); % Compute norm(H,'fro')
 tol_H = norm_H*tol; % Define absolute tolerance
-Mh(abs(Mh)<tol_H) = 0; %Set small values to zero
 
-if norm(Mh-M,'fro') >= tol_H
-    start_DR = 1; % Flag to start Douglas-Rachford iterations
+
+%% Start Douglas-Rachford iterations
+% Choose between convex and non-convex Douglas-Rachford
+if  solv == 1 
+    [M,Z_fix,iter,D] = dr(@(Z,gamma)proxnonconv_square(Z,r,2,gamma),@(Z,gamma)projhankel(Z,gamma,-H),dim,'tol',tol_H,'gamma',gamma,'Z0',Z0,'rho',rho);
+
 else
-    start_DR = 0; % Flag to not start Douglas-Rachford iterations
+    [M,Z_fix,iter,D] = dr(@(Z,gamma)proxnormrast_square(Z,r,2,gamma),@(Z,gamma)projhankel(Z,gamma,-H),dim,'tol',tol_H,'gamma',gamma,'Z0',Z0,'rho',rho);
 end
-
-%% Start Douglas-Rachford iterations if M is not Hankel
-if start_DR ~= 0 
-    
-    % Choose between convex and non-convex Douglas-Rachford
-    if  solv == 1 
-        [M,Z_fix,iter,D] = dr(@(Z,gamma)proxnonconv_square(Z,r,2,gamma),@(Z,gamma)projhankel(Z,gamma,-H),dim,'tol',tol_H,'gamma',gamma,'Z0',Z0,'rho',rho);
-              
-    else
-        [M,Z_fix,iter,D] = dr(@(Z,gamma)proxnormrast_square(Z,r,2,gamma),@(Z,gamma)projhankel(Z,gamma,-H),dim,'tol',tol_H,'gamma',gamma,'Z0',Z0,'rho',rho);
-    end
           
-end
-
 % Compute error and rank of the approximation
 err = norm(M-H,'fro');
 rankM = rank(M,tol_H);

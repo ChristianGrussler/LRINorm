@@ -301,6 +301,7 @@ while indt == 0
                 R = roots(polynom);
                 I = (abs(imag(R)) <= tol_rel);
                 mu = max(R(I));
+                
             end
         
         % Else p = 1:  

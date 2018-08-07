@@ -12,7 +12,7 @@
 %       1. rankM = rank(M)
 %       2. err = norm(H-M,'fro')
 %       3. D = solution of the dual problem
-%       5a. [...] = CVXHANKELAPPROX(H,r,'tol',tol) sets the relative
+%    [...] = CVXHANKELAPPROX(H,r,'tol',tol) sets the relative
 %       tolerance of:
 %           + The numerical rank: rankM = rank(M/norm(H,'fro'),tol)
 %           + Iterations stop: Stop if (Y_k -X_k)/norm(H,'fro') < tol
