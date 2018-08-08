@@ -2,7 +2,7 @@
 MATLAB code for Low-rank Optimization by Low-Rank Inducing Norms and non-convex Douglas-Rachford. 
 
 ## Purpose:
-Low-rank rank inducing norms and non-convex Proximal Splitting Algoriths attempt to find exact rank/cardinality-r solutions to minimization problems with convex loss functions, i.e., avoiding of regularzation heuristics.
+Low-rank rank inducing norms and non-convex Proximal Splitting Algoriths attempt to find exact rank/cardinality-r solutions to minimization problems with convex loss functions, i.e., avoiding of regularzation heuristics. This project provides MATLAB implementations for the proximal mappings of the low-rank inducing Frobenius and Spectral norms, as well as, their epi-graph projections and non-convex counter parts.
 
 ## Literature:
 
@@ -38,7 +38,7 @@ There are three examples in the "Example" folder:
 
 ### Optimization
 
-The "Optimizaton" folder contains Douglas-Rachford splitting as well as CVX implementations for the low-rank inducing Frobenius and Spectral norms.
+The "Optimizaton" folder contains Douglas-Rachford splitting as well as CVX implementations for the low-rank inducing Frobenius and Spectral norms. It is easy to modify these functions for other constraints!
 
 #### Exact Matrix completion
 
@@ -85,7 +85,7 @@ M = drhankelapprox(H,r,'solver','NDR')
 ```
 
 ### Proximal Mappings
-The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm as well as their non-convex counter parts.
+The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm, as well as, as their epi-graph projections and non-convex counter parts.
 
 #### Low-rank inducing Spectral and Frobenius norms: 
 
@@ -101,7 +101,7 @@ X = proxnormrast_square(Z,r,p,gamma)
 #### Projection on the epi-graph of the low-rank inducing norms: 
 Projection of (Z,zv) on the epi-graph of the low-rank inducing norms with parameter r and scaling factor gamma:
 ```
-[X,xv] = proxnormrast_square(Z,zv,r,p,gamma)
+[X,xv] = projrnorm(Z,zv,r,p,gamma)
 ```
 
 #### Non-convex proximal mappings for Frobenius and Spectral norm: 
