@@ -115,7 +115,3 @@ Non-convex proximal mapping for the SQUARED norms at Z with parameter r and scal
 ```
 X = proxnonconv_square(Z,r,p,gamma)
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> 6b6b97e5b121a190612d0a4b96061628f89e7873
