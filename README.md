@@ -1,4 +1,4 @@
--# LRINorm
+# LRINorm
 MATLAB code for Low-rank Optimization by Low-Rank Inducing Norms and non-convex Douglas-Rachford. 
 
 ## Purpose:
