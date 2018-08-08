@@ -101,7 +101,7 @@ X = proxnormrast_square(Z,r,p,gamma)
 #### Projection on the epi-graph of the low-rank inducing norms: 
 Projection of (Z,zv) on the epi-graph of the low-rank inducing norms with parameter r and scaling factor gamma:
 ```
-[X,xv] = projrnorm(Z,zv,r,p,gamma)
+[X,xv] = projrast(Z,zv,r,p,gamma)
 ```
 
 #### Non-convex proximal mappings for Frobenius and Spectral norm: 
