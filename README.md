@@ -26,8 +26,8 @@ Download all files and add to path: https://github.com/LowRankOpt/LRINorm/archiv
 
 ## Documentation
 In the following it holds that
-* for the low-rank inducing Frobenius norm: p = 2
-* for the low-rank inducing Spectral norm:  p = inf
+* for the low-rank inducing Frobenius norm: ``p = 2``
+* for the low-rank inducing Spectral norm:  ``p = inf``
 
 ### Examples
 There are three examples in the "Example" folder:
@@ -85,7 +85,7 @@ M = drhankelapprox(H,r,'solver','NDR')
 ```
 
 ### Proximal Mappings
-The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm, as well as, as their epi-graph projections and non-convex counter parts.
+The folder "Prox" contains the proximal mappings to the low-rank inducing Frobenius and Spectral norm, as well as, as their epi-graph projections and non-convex counter parts. In the following, we only discuss the matrix-valued case, but notice that for the vector-valued case (sparsity inducing), it is only required to add ``'vec'`` as an input argument. 
 
 #### Low-rank inducing Spectral and Frobenius norms: 
 
