@@ -71,6 +71,13 @@ hr_dr = [G.D; M_dr(:,1); M_dr(end,2:end)'];
 %% Apply Kung's realization algorithm to hr
 G_dr = kung(hr_dr,r,G.ts);
 
+%% Determine balanced truncated model Gr of order r
+Gb = balreal(G);
+A = Gb.a;
+B = Gb.b;
+C = Gb.c;
+Gr = ss(A(1:r,1:r),B(1:r,:),C(:,1:r),G.D,G.ts); % Note that balred gives sometimes worse approximations!
+
 
 %% Relative Error comparison of the H_infty norm
 e_dr_vs_bal = norm(G-G_dr,'inf')/norm(G-Gr,'inf');
