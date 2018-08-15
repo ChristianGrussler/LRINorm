@@ -1,2 +1,8 @@
 # DS_store:
 /.DS_Store
+
+#.m~ files:
+/.m~
+
+# Folder "Work:
+Work/
