@@ -87,13 +87,13 @@ end
 if vec == 1 
     %% Vector valued problem
     % Moreau decomposition
-    [sol,final] = projrnorm(Z,[],r,p,gamma,varargin);
+    [sol,~,final] = projrnorm(Z,[],r,p,gamma,varargin);
     X = Z - sol;
 else
     %% Matrix valued problem
     [U,S,V] = svd(Z);
     d = diag(S);
-    [sol,final] = projrnorm(d,[],r,p,gamma,varargin);
+    [sol,~,final] = projrnorm(d,[],r,p,gamma,varargin);
     % Moreau decomposition
     S(1:min_mn,1:min_mn) = diag(d - sol);
     X = U*S*V';
