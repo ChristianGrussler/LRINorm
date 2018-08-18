@@ -1,5 +1,5 @@
 # LRINorm
-Low-rank Optimization by Low-Rank Inducing Norms and non-convex Douglas-Rachford in MATLAB.
+Low-rank optimization by Low-Rank Inducing Norms as well as non-convex Douglas-Rachford in MATLAB.
 
 ## Purpose:
 Low-rank rank inducing norms and non-convex Proximal Splitting Algoriths attempt to find exact rank/cardinality-r solutions to minimization problems with convex loss functions, i.e., avoiding of regularzation heuristics. This project provides MATLAB implementations for the proximal mappings of the low-rank inducing Frobenius and Spectral norms, as well as, their epi-graph projections and non-convex counter parts.
