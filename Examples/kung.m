@@ -8,7 +8,7 @@ function G = kung(h,r,ts)
 D = h(1);
 n = length(h);
 
-l = floor((n-1)/2);
+l = floor((n-2)/2);
 
 H = hankel(h(2:l+2),h(l+2:2*l+1));
 Hb = hankel(h(3:l+3),h(l+3:2*l+2));
