@@ -1,17 +1,20 @@
 # LRINorm
-MATLAB code for Low-rank Optimization by Low-Rank Inducing Norms and non-convex Douglas-Rachford. 
+A MATLAB package for rank constrained optimization by low-rank inducing norms and non-convex proximal splitting methods.
 
 ## Purpose:
 Low-rank rank inducing norms and non-convex Proximal Splitting Algoriths attempt to find exact rank/cardinality-r solutions to minimization problems with convex loss functions, i.e., avoiding of regularzation heuristics. This project provides MATLAB implementations for the proximal mappings of the low-rank inducing Frobenius and Spectral norms, as well as, their epi-graph projections and non-convex counter parts.
 
 ## Literature:
 
-### Low-rank inducing norms: 
-* [Rank Reduction with Convex Constraints](https://lup.lub.lu.se/search/publication/54cb814f-59fe-4bc9-a7ef-773cbcf06889)
+### Optimization with low-rank inducing norms: 
 * [Low-rank Inducing Norms with Optimality Interpretations](https://arxiv.org/abs/1612.03186)
-* [Low-rank Optimization with Convex Constraints](https://arxiv.org/abs/1606.01793)
-* [The Use of the r* Heuristic in Covariance Completion Problems](http://www.control.lth.se/index.php?mact=ReglerPublicationsB,cntnt01,showpublication,0&cntnt01LUPid=a61669c7-29b9-41ee-82da-9c825b08f8d8&cntnt01returnid=60)
-* [On optimal low-rank approximation of non-negative matirces](http://lup.lub.lu.se/search/ws/files/21812505/2015cdcGrusslerRantzer.pdf)
+* [Low-rank Optimization with Convex Constraints](https://doi.org/10.1109/TAC.2018.2813009)
+* [The Use of the r* Heuristic in Covariance Completion Problems](https://doi.org/10.1109/CDC.2016.7798554)
+* [Rank Reduction with Convex Constraints](https://lup.lub.lu.se/search/publication/54cb814f-59fe-4bc9-a7ef-773cbcf06889)
+* [On optimal low-rank approximation of non-negative matirces](https://doi.org/10.1109/CDC.2015.7403045)
+
+### Proximal mapping computation for low-rank inducing norms:
+* [Efficient Proximal Mapping Computation for Unitarily Invariant Low-Rank Inducing Norms](https://arxiv.org/abs/1810.07570)
 
 ### Non-convex counter parts:
 * [Local Convergence of Proximal Splittinge Methods for Rank Constrained Problems](https://arxiv.org/abs/1710.04248)
