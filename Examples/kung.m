@@ -1,9 +1,8 @@
-%KUNG Ho-Kalman-Kung Algorithm for approximate indification of linear 
-%   discrete time-invariant SISO systems based on impulse response samples.
+%KUNG Ho-Kalman-Kung Algorithm for approximate indification of discrete 
+%   LTI SISO systems based on impulse response samples.
 %
-%   G = KUNG(h,r,ts) determines an r-th order approximate linear discrete
-%   time-invariant SISO realization of the impulse response samples h with
-%   sampling time ts.
+%   G = KUNG(h,r,ts) determines an r-th order approximate discrete LTI
+%   SISO realization of the impulse response samples h with sampling time ts.
 function G = kung(h,r,ts)
 D = h(1);
 n = length(h);
