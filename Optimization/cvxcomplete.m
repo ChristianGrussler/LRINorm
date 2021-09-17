@@ -34,7 +34,7 @@
 %
 %   - C. Grussler and P. Giselsson (2016):
 %   "Low-Rank Inducing Norms With Optimality Interpreations", 
-%   arXiv:1612.03186v1.
+%   SIAM J. Optim., 28(4), pp. 3057–3078.
 %
 %   - C. Grussler and P. Giselsson (2017):
 %   "Local convergence of proximal splitting methods for rank constrained
